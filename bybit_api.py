@@ -96,6 +96,28 @@ class BybitAPI:
         Returns:
             DataFrame with OHLCV data
         """
+        # Convert interval format to what Bybit API expects
+        # Map common time intervals to Bybit's expected format
+        interval_map = {
+            '1m': '1', 
+            '3m': '3', 
+            '5m': '5',
+            '15m': '15',
+            '30m': '30',
+            '1h': '60',
+            '2h': '120',
+            '4h': '240',
+            '6h': '360',
+            '12h': '720',
+            '1d': 'D',
+            '1w': 'W',
+            '1M': 'M'
+        }
+        
+        # Convert the interval if it's in our map
+        if interval in interval_map:
+            interval = interval_map[interval]
+        
         self._rate_limit()
         try:
             response = self.client.get_kline(
