@@ -30,7 +30,7 @@ BOLLINGER_PERIOD = 20
 BOLLINGER_STD = 2
 
 # API settings
-BYBIT_TESTNET = True  # Use testnet for testing
+BYBIT_TESTNET = False  # Use mainnet for live trading
 API_RATE_LIMIT = 10  # Maximum API calls per second
 
 # Logging
